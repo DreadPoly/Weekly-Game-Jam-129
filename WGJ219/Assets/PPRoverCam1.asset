@@ -109,7 +109,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: -61.5
+    value: -66.3
   brightness:
     overrideState: 0
     value: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.9782922, z: 0.8443413, w: 0}
+    value: {x: 0.99566287, y: 0.98148865, z: 1, w: 0}
   gamma:
     overrideState: 1
     value: {x: 0.9965743, y: 0.9907813, z: 1, w: 0}
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 69.1
+    value: 65.1
   intensityX:
     overrideState: 0
     value: 1
@@ -1406,7 +1406,7 @@ MonoBehaviour:
     value: 0
   scale:
     overrideState: 1
-    value: 1.18
+    value: 1.2
 --- !u!114 &8239758714495944197
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1428,10 +1428,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.813
+    value: 0.574
   size:
     overrideState: 1
-    value: 1.448
+    value: 1.358
   lumContrib:
     overrideState: 1
     value: 0.926

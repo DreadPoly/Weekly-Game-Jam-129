@@ -12,6 +12,9 @@ public class PlayerCameraScript : MonoBehaviour
     public bool isNearChair;
     public GameObject player;
     public bool isSitting;
+    public bool exitSeat;
+    public GameObject seatText;
+    public GameObject seatExitText;
 
 
     [SerializeField] Transform pBody;
@@ -40,6 +43,7 @@ public class PlayerCameraScript : MonoBehaviour
     public string playerLookAtTag;
     private void Update()
     {
+        dist = Vector3.Distance(chair.position, transform.position);
         CamRotate();
         if (Input.GetMouseButtonDown(1) && cursorLocked == true)
         {
@@ -57,27 +61,34 @@ public class PlayerCameraScript : MonoBehaviour
             playerLookAtTag = playerLookAt.transform.tag;
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * playerLookAt.distance, Color.green);
         }
-        if (playerLookAtTag == ("Interactable"))
-        {
-            Debug.Log(playerLookAt.transform.name);
-        }
 
         //Chair Interactions
-        dist = Vector3.Distance(chair.position, transform.position);
-        if (playerLookAt.transform.name == ("Chair") && dist <= 2.5f)
+        if (playerLookAt.transform.name == ("Chair") && dist <= 2.5f && !isSitting)
         {
-            Debug.Log("This is where the Sit down event would be called");
             isNearChair = true;
+            seatText.active = true;
+            seatExitText.active = false;
+        }
+        else if (playerLookAt.transform.name == ("Chair") && dist <= 2.5f && isSitting)
+        {
+            isNearChair = true;
+            seatText.active = false;
+            seatExitText.active = true;
         }
         else
         {
             isNearChair = false;
+            seatText.active = false;
+            seatExitText.active = false;
         }
-        if (Input.GetKeyDown(KeyCode.F) && isNearChair)
+        if (Input.GetKeyDown(KeyCode.F) && isNearChair && !isSitting)
         {
-            Debug.Log("SIT DOWN");
             isSitting = true;
-            
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && isNearChair && isSitting)
+        {
+            isSitting = false;
+            exitSeat = true;
         }
     }
     // Update is called once per frame

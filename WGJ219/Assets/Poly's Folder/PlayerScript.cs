@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float movementSpeed;
     public PlayerCameraScript pCS;
     public Transform teleportTargetTransform;
+    public Transform teleportTargetTransformStanding;
     CharacterController charController;
 
 
@@ -24,6 +25,11 @@ public class PlayerScript : MonoBehaviour
         if (pCS.isSitting == true)
         {
             this.transform.position = teleportTargetTransform.transform.position;
+        }
+        if (pCS.exitSeat == true)
+        {
+            this.transform.position = teleportTargetTransformStanding.transform.position;
+            pCS.exitSeat = false;
         }
     }
 
